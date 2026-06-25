@@ -167,7 +167,7 @@ export default function ApplyLoan() {
 
             <div className="space-y-2 pt-4">
               <Label>Salary Slip (PDF/JPG/PNG max 5MB)</Label>
-              <div className="border-2 border-dashed border-white/10 rounded-2xl p-8 text-center bg-background/30 hover:bg-white/5 transition-colors cursor-pointer relative group">
+              <div className="border-2 border-dashed border-black/10 rounded-2xl p-8 text-center bg-white/50 hover:bg-white transition-colors cursor-pointer relative group">
                 <Input 
                   type="file" 
                   accept=".pdf,image/jpeg,image/png,image/jpg"
@@ -202,7 +202,7 @@ export default function ApplyLoan() {
           </div>
 
           {!mathPreview ? (
-            <div className="text-center p-6 bg-white/5 rounded-xl border border-white/10">
+            <div className="text-center p-6 bg-black/5 rounded-xl border border-black/5">
               <p className="text-sm text-muted-foreground">Enter a valid amount (50k-5L) and tenure (30-365 days) to see preview.</p>
             </div>
           ) : (
@@ -215,7 +215,7 @@ export default function ApplyLoan() {
                 <p className="text-sm text-muted-foreground mb-1">Interest Component</p>
                 <p className="text-2xl font-semibold text-yellow-500">+ ₹{mathPreview.interest.toLocaleString(undefined, {maximumFractionDigits: 2})}</p>
               </div>
-              <div className="pt-6 border-t border-white/10">
+              <div className="pt-6 border-t border-black/10">
                 <p className="text-sm text-muted-foreground mb-1">Total Repayment</p>
                 <p className="text-4xl font-bold text-primary">₹{mathPreview.total.toLocaleString(undefined, {maximumFractionDigits: 2})}</p>
               </div>

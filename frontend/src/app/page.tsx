@@ -30,7 +30,7 @@ export default function Home() {
             </Button>
           </Link>
           <Link href="/login">
-            <Button size="lg" variant="outline" className="h-14 px-8 text-lg font-medium hover:bg-white/5 border-white/10 backdrop-blur-md">
+            <Button size="lg" variant="outline" className="h-14 px-8 text-lg font-medium hover:bg-black/5 border-black/10 backdrop-blur-md text-foreground">
               Sign In to Dashboard
             </Button>
           </Link>

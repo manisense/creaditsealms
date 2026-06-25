@@ -21,16 +21,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body
-        className={`${inter.variable} antialiased min-h-screen flex flex-col bg-gradient-to-br from-background via-background to-secondary/20`}
+        className={`${inter.variable} antialiased min-h-screen flex flex-col bg-slate-50 text-slate-900`}
       >
         <AuthProvider>
           <Navbar />
           <main className="flex-1 flex flex-col">
             {children}
           </main>
-          <Toaster theme="dark" position="top-right" />
+          <Toaster position="top-right" />
         </AuthProvider>
       </body>
     </html>

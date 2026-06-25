@@ -124,7 +124,7 @@ export default function BorrowerDashboard() {
                 <h2 className="text-3xl font-bold">₹{loan.loanAmount.toLocaleString()}</h2>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/5">
+              <div className="grid grid-cols-2 gap-4 pt-4 border-t border-black/5">
                 <div>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground mb-1">
                     <Calendar className="h-4 w-4" /> Tenure
