@@ -13,9 +13,11 @@ app.use(express.json());
 
 import authRoutes from './routes/auth.routes';
 import loanRoutes from './routes/loan.routes';
+import adminRoutes from './routes/admin.routes';
 
 app.use('/api/auth', authRoutes);
 app.use('/api/loans', loanRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.get('/', (req, res) => {
   res.send('CreditSea LMS API is running');

@@ -14,8 +14,10 @@ app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
 const loan_routes_1 = __importDefault(require("./routes/loan.routes"));
+const admin_routes_1 = __importDefault(require("./routes/admin.routes"));
 app.use('/api/auth', auth_routes_1.default);
 app.use('/api/loans', loan_routes_1.default);
+app.use('/api/admin', admin_routes_1.default);
 app.get('/', (req, res) => {
     res.send('CreditSea LMS API is running');
 });
