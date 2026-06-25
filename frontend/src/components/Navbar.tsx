@@ -9,7 +9,7 @@ export default function Navbar() {
   const { user, logout } = useAuth();
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-black/5 bg-white/80 backdrop-blur-xl shadow-sm">
+    <nav className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/90 backdrop-blur-md shadow-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold text-xl">
@@ -35,7 +35,7 @@ export default function Navbar() {
                 </Link>
               )}
               
-              <div className="h-8 w-[1px] bg-black/10 mx-2" />
+              <div className="h-8 w-[1px] bg-gray-200 mx-2" />
               
               <div className="flex items-center gap-3">
                 <span className="text-sm font-medium text-muted-foreground hidden sm:inline-block">
@@ -52,7 +52,7 @@ export default function Navbar() {
                 <Button variant="ghost" className="text-sm font-medium">Sign In</Button>
               </Link>
               <Link href="/register">
-                <Button className="text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg transition-all">Get Started</Button>
+                <Button className="text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm transition-all">Get Started</Button>
               </Link>
             </>
           )}
