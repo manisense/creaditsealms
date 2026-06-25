@@ -18,6 +18,12 @@ export const authenticate = (req: AuthRequest, res: Response, next: NextFunction
     }
 
     const token = authHeader.split(' ')[1];
+    
+    if (!token) {
+      res.status(401).json({ error: 'Unauthorized: Malformed token' });
+      return;
+    }
+
     const decoded = verifyToken(token) as { id: string; role: Role };
     req.user = decoded;
     next();
