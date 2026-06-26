@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 
 interface Loan {
   _id: string;
-  borrower: { _id: string; name: string; email: string };
+  borrowerId: { _id: string; name: string; email: string };
   loanAmount: number;
   tenureDays: number;
   status: string;
@@ -109,7 +109,7 @@ export default function AdminDashboard() {
   }
 
   const filteredLoans = loans.filter(l => 
-    l.borrower.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (l.borrowerId?.name || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
     l.panNumber.toLowerCase().includes(searchTerm.toLowerCase()) ||
     l.status.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -180,8 +180,8 @@ export default function AdminDashboard() {
                 filteredLoans.map((loan) => (
                   <tr key={loan._id} className="hover:bg-slate-50/50 transition-colors">
                     <td className="px-6 py-4">
-                      <div className="font-medium text-slate-900">{loan.borrower.name}</div>
-                      <div className="text-xs text-slate-500">{loan.borrower.email}</div>
+                      <div className="font-medium text-slate-900">{loan.borrowerId?.name || 'Unknown'}</div>
+                      <div className="text-xs text-slate-500">{loan.borrowerId?.email || 'Unknown'}</div>
                     </td>
                     <td className="px-6 py-4 font-mono text-slate-600">{loan.panNumber}</td>
                     <td className="px-6 py-4">
@@ -240,7 +240,7 @@ export default function AdminDashboard() {
               <div className="grid grid-cols-2 gap-y-4 gap-x-8 mb-6">
                 <div>
                   <p className="text-xs text-slate-500 mb-1">Borrower Name</p>
-                  <p className="font-medium text-slate-900">{selectedLoan.borrower.name}</p>
+                  <p className="font-medium text-slate-900">{selectedLoan.borrowerId?.name}</p>
                 </div>
                 <div>
                   <p className="text-xs text-slate-500 mb-1">PAN Number</p>

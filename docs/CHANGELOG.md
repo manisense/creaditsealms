@@ -12,5 +12,6 @@ This document serves as a persistent record of all major changes, feature implem
 - **Phase 3 Complete**: Created `Loan` model, Business Rule Engine (BRE) service, Simple Interest Math calculation service, Cloudflare R2 file upload utility, and the Borrower Application endpoints (`/apply`, `/my-loans`).
 - **Phase 4 Complete**: Created `Payment` model and Admin routes (`/api/admin/loans`, `/api/admin/loans/:loanId/status`, `/api/admin/loans/:loanId/payments`) with strict Role-Based Access Control enforcing operations lifecycle.
 - **Phase 5 Complete**: Implemented Next.js Frontend Borrower Portal including a premium glassmorphic landing page, Authentication UI, Borrower Dashboard, and Loan Application Form with a Live Simple Interest Calculator.
+- **Phase 6 Complete**: Developed the Internal Operations Dashboard (`/admin/dashboard`) with strict role-based UI actions (Sanction, Disbursement, Collection), interactive data tables, and dynamic status-update modals mirroring the clean light theme.
 
 *Further updates will be appended here as development phases are completed.*

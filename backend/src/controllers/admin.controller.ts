@@ -2,15 +2,43 @@ import { Response } from 'express';
 import { AuthRequest } from '../middlewares/auth';
 import { Loan, LoanStatus } from '../models/Loan';
 import { Payment } from '../models/Payment';
-import { Role } from '../models/User';
+import { Role, User } from '../models/User';
 
 export const getLoans = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
     const { status } = req.query;
     const filter = status ? { status: status as LoanStatus } : {};
     
-    // Admins and specific roles can see loans. 
-    // In a production app, we would strictly filter by role here too (e.g. Sales only sees REGISTERED)
+    // Handle REGISTERED status for Sales role
+    if (status === LoanStatus.REGISTERED || req.user?.role === Role.Sales) {
+      const borrowersWithLoans = await Loan.find().distinct('borrowerId');
+      const registeredUsers = await User.find({
+        role: Role.Borrower,
+        _id: { $nin: borrowersWithLoans }
+      });
+      
+      const mockLoans = registeredUsers.map(user => ({
+        _id: user._id, // mock loan ID
+        borrowerId: { _id: user._id, name: user.name, email: user.email },
+        panNumber: 'PENDING',
+        loanAmount: 0,
+        tenureDays: 0,
+        status: LoanStatus.REGISTERED,
+        outstandingBalance: 0,
+        totalRepayment: 0,
+        createdAt: user.createdAt
+      }));
+
+      if (status === LoanStatus.REGISTERED) {
+         res.status(200).json({ loans: mockLoans });
+         return;
+      } else {
+         const loans = await Loan.find(filter).populate('borrowerId', 'name email').sort({ createdAt: -1 });
+         res.status(200).json({ loans: [...mockLoans, ...loans] });
+         return;
+      }
+    }
+
     const loans = await Loan.find(filter).populate('borrowerId', 'name email').sort({ createdAt: -1 });
     res.status(200).json({ loans });
   } catch (error) {
