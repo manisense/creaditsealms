@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
   res.send('CreditSea LMS API is running');
 });
 
-app.listen(port, () => {
+app.listen(Number(port), '0.0.0.0', () => {
   console.log(`Server is running on port ${port}`);
 });
 
