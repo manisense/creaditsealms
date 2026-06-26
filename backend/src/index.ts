@@ -27,12 +27,13 @@ app.get('/', (req, res) => {
   res.send('CreditSea LMS API is running');
 });
 
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+
 mongoose.connect(process.env.MONGODB_URI as string)
   .then(() => {
     console.log('Connected to MongoDB');
-    app.listen(port, () => {
-      console.log(`Server is running on port ${port}`);
-    });
   })
   .catch((error) => {
     console.error('Error connecting to MongoDB:', error);
